@@ -56,7 +56,7 @@ if ($method == 'POST') {
     response("Missing fields", 400);
   }
   $sql = "INSERT INTO person (first_name, last_name, age, address, occupation, gender) VALUES ('$first_name', '$last_name', $age, '$address', '$occupation', '$gender')";
-  if ($person_id != null || $person_id == "") {
+  if ($person_id != null && $person_id != "undefined" && $person_id != "") {
     $sql = "UPDATE person SET first_name='$first_name', last_name='$last_name', age=$age, address='$address', occupation='$occupation', gender='$gender' WHERE id=$person_id";
   }
   if ($conn->query($sql) === TRUE) {
