@@ -49,6 +49,9 @@ $("#formsubmit").on("click", async e => {
     gender: $("select[name=gender]").val() as string,
     occupation: $("input[name=occupation]").val() as string,
   };
+  if (!person.first_name || !person.last_name) {
+    alert("First Name and Last Name are required");
+  }
   // determines if new or old
   const id = parseInt($("input[name=id]").val() as string);
   if (!isNaN(id)) person.id = id;

@@ -22,7 +22,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') {
   $person_id = (int)($_GET['person_id']);
   if ($person_id == null) {
-    $sql = "SELECT * FROM person";
+    $sql = "SELECT * FROM person WHERE status = 0";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       $data = array();
@@ -34,7 +34,7 @@ if ($method == 'GET') {
       response("No data found", 404);
     }
   } else {
-    $sql = "SELECT * FROM person WHERE id = $person_id";
+    $sql = "SELECT * FROM person WHERE id = $person_id AND status = 0";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
@@ -70,7 +70,7 @@ if ($method == 'DELETE') {
   if ($person_id == null) {
     response("Missing person_id", 400);
   }
-  $sql = "DELETE FROM person WHERE id=$person_id";
+  $sql = "UPDATE person SET status=2 WHERE id=$person_id";
   if ($conn->query($sql) === TRUE) {
     response("Successful");
   } else {
