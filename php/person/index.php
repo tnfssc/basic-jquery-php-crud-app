@@ -14,6 +14,8 @@ if (!$conn) {
 }
 
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: *");
+header("Access-Control-Allow-Headers: *");
 // get request method
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -43,7 +45,7 @@ if ($method == 'GET') {
   }
 }
 if ($method == 'POST') {
-  $person_id = $_POST['person_id'];
+  $person_id = $_POST['id'];
   $first_name = $_POST["first_name"];
   $last_name = $_POST["last_name"];
   $age = $_POST["age"];
@@ -54,7 +56,7 @@ if ($method == 'POST') {
     response("Missing fields", 400);
   }
   $sql = "INSERT INTO person (first_name, last_name, age, address, occupation, gender) VALUES ('$first_name', '$last_name', $age, '$address', '$occupation', '$gender')";
-  if ($person_id != null) {
+  if ($person_id != null || $person_id == "") {
     $sql = "UPDATE person SET first_name='$first_name', last_name='$last_name', age=$age, address='$address', occupation='$occupation', gender='$gender' WHERE id=$person_id";
   }
   if ($conn->query($sql) === TRUE) {

@@ -4,10 +4,45 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Basic CRUD App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <form id="form">
+        <input type="number" name="id" style="display: none" />
+        <div>First Name: <input type="text" name="first_name" placeholder="First Name" /></div>
+        <div>Last Name: <input type="text" name="last_name" placeholder="Last Name" /></div>
+        <div>Age: <input type="number" name="age" placeholder="Age" /></div>
+        <div>Address: <input type="text" name="address" placeholder="Address" /></div>
+        <div>
+          Gender:
+          <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div>Occupation: <input type="text" name="occupation" placeholder="Occupation" /></div>
+        <div>
+          <button id="formsubmit">Submit</button>
+        </div>
+      </form>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Occupation</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="personstable"></tbody>
+      </table>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
