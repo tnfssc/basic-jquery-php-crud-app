@@ -6,7 +6,7 @@ import { Person } from "./types";
 const createTr = ({ person }: { person: Person }) => {
   return `
     <tr>
-      <td>${person.id}</td>
+      <th scope="row">${person.id}</th>
       <td>${person.first_name}</td>
       <td>${person.last_name}</td>
       <td>${person.age}</td>
@@ -15,8 +15,8 @@ const createTr = ({ person }: { person: Person }) => {
       <td>${person.occupation}</td>
       <td>${new Date(person.created_at!).toLocaleString("en-IN")}</td>
       <td>
-        <button id="${`${person.id}-edit-btn`}">Edit</button>
-        <button id="${`${person.id}-remove-btn`}">Remove</button>
+        <button id="${`${person.id}-edit-btn`}" class="btn btn-warning">Edit</button>
+        <button id="${`${person.id}-remove-btn`}" class="btn btn-danger">Remove</button>
       </td>
     </tr>
   `;
